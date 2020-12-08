@@ -1,0 +1,140 @@
+        //odluka + tekst - da ili ne
+        public static bool Potvrdi(string tekst)
+        {
+            Console.WriteLine("Da li zelite " + tekst + " [d/n]:");
+            char odluka = ' ';
+            while (!(odluka == 'd' || odluka == 'n'))
+            {
+                odluka = Char.ToLower(OcitajKarakter());
+                if (!(odluka == 'd' || odluka == 'n'))
+                {
+                    Console.WriteLine("Opcije su d ili n");
+                }
+            }
+            return odluka == 'd' ? true : false;
+        }
+
+
+
+        public static char ReadChar()
+        {
+            char userChar;
+            while (Char.TryParse(Console.ReadLine(), out userChar) == false)
+            {
+                Console.Write("GRESKA - Pogresno unsesena vrednost, pokusajte ponovo: ");
+            }
+            return userChar;
+        }
+
+
+        public static int ReadInt()
+        {
+            int number;
+            while (Int32.TryParse(Console.ReadLine(), out number) == false)
+            {
+                Console.Write("GRESKA - Pogresno unsesena vrednost, pokusajte ponovo: ");
+            }
+            return number;
+        }
+
+        //čitanje promenljive float
+        public static float OcitajRealanBroj()
+        {
+            float broj;
+            while (Single.TryParse(Console.ReadLine(), out broj) == false)
+            {
+                Console.Write("GRESKA - Pogresno unsesena vrednost, pokusajte ponovo: ");
+            }
+            return broj;
+        }
+
+
+        public static int OcitajGodinu()
+        {
+            int godina;
+
+            while (Int32.TryParse(Console.ReadLine(), out godina) == false)
+            {
+                Console.Write("GRESKA - Unesite godinu u numerickom formatu, na primer: 1996");
+            }
+
+            if (godina.ToString().Length != 4)
+
+            {
+                Console.Write("GRESKA - Godina mora sadrzati tacno cetiri cifre");
+                OcitajGodinu();
+            }
+
+            else if ((godina < 1900 || godina > 2020))
+            {
+                Console.Write("GRESKA - Godina mora biti u periodu od 1900 do 2020 godine");
+                OcitajGodinu();
+            }
+
+
+            return godina;
+        }
+
+
+
+        //čitanje promenljive string
+        public static string ReadText()
+        {
+            string text = "";
+            while (text == null || text.Equals("")) //stringovi se mogu porediti i sa preklopljenim operatorom ==
+            {
+                text = Console.ReadLine();
+            }
+            return text;
+        }
+
+
+//meni
+
+internal static void SalesMeny()
+        {
+
+             int decision = -1;
+            while (decision != 0)
+            {
+                Helper.MenyForSales();
+                Console.WriteLine("Opcija:");
+                decision = Helper.ReadInt();
+                Console.Clear();
+                switch (decision)
+                {
+                    case 0:
+                        Console.WriteLine("Izlaz iz programa");
+                        break;
+                    case 1:
+                        CategoryUI.MenyCategory();
+                        break;
+                    case 2:
+                        VehicleUI.MenyVehicle();
+                        break;
+                    case 3:
+                        CarUI.MenyCar();
+                        break;
+
+                    case 4:
+                        MotorcycleUI.MenyMotorcycle();
+                        break;
+                    case 5:
+                        BicycleUI.MenyBicycle();
+                        break;
+                    default:
+                        Console.WriteLine("Nepostojeca komanda!\n\n");
+                        break;
+
+
+
+
+                }
+
+
+
+            }
+
+        }
+
+
