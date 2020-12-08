@@ -1,3 +1,4 @@
+
         //odluka + tekst - da ili ne
         public static bool Potvrdi(string tekst)
         {
@@ -5,7 +6,7 @@
             char odluka = ' ';
             while (!(odluka == 'd' || odluka == 'n'))
             {
-                odluka = Char.ToLower(OcitajKarakter());
+                odluka = Char.ToLower(ReadChar());
                 if (!(odluka == 'd' || odluka == 'n'))
                 {
                     Console.WriteLine("Opcije su d ili n");
@@ -89,12 +90,12 @@
         }
 
 
-//meni
-
-internal static void SalesMeny()
+        //meni
+/*
+        internal static void SalesMeny()
         {
 
-             int decision = -1;
+            int decision = -1;
             while (decision != 0)
             {
                 Helper.MenyForSales();
@@ -136,5 +137,3 @@ internal static void SalesMeny()
             }
 
         }
-
-
